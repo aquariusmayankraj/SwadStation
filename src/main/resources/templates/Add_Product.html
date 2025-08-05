@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin : Add Product</title>
+  <link rel="stylesheet" href="" th:href="@{/css/Add_Product.css}" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: #f5f5f5;
+    }
+
+    a {
+      display: inline-block;
+      margin: 20px;
+      text-decoration: none;
+      background-color: #b71c1c;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #8b0000;
+    }
+
+    .addProducts {
+      max-width: 550px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(255, 0, 0, 0.05);
+      border: 1px solid #e57373;
+    }
+
+    .addProducts h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #ff6666;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+
+    form label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #ff9999;
+    }
+
+    form input[type="text"],
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #d98c95;
+      background-color: #2b2b2b;
+      font-size: 1em;
+      color: #fff;
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+      color: #bbb;
+    }
+
+    form textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    form button {
+      width: 100%;
+      background-color: #b71c1c;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    form button:hover {
+      background-color: #a40000;
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 576px) {
+      .addProducts {
+        margin: 30px 15px;
+        padding: 20px;
+      }
+
+      a {
+        margin: 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="/admin/services">Back to Services</a>
+
+  <div class="addProducts">
+    <h3>ADD NEW PRODUCT</h3>
+    <form action="" th:action="@{/addingProduct}" method="post">
+      <label for="pname">Product Name:</label>
+      <input type="text" id="pname" name="pname" placeholder="Enter product name..." required />
+
+      <label for="pprice">Product Price:</label>
+      <input type="text" id="pprice" name="pprice" placeholder="Enter product price..." required />
+
+      <label for="pdescription">Product Description:</label>
+      <textarea id="pdescription" name="pdescription" placeholder="Enter product description..." required></textarea>
+
+      <button type="submit">Add Product</button>
+    </form>
+  </div>
+</body>
+
+</html>

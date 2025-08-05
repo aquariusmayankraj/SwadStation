@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TEA : REGISTER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .RegistrationContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .registration {
+            background-color: #111111; 
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.2);
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .registration h2 {
+            color: #dc143c; 
+            margin-bottom: 25px;
+        }
+
+        .registration label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #ff4d4d; 
+            font-weight: 500;
+        }
+
+        .registration input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 15px;
+            border: 1px solid #dc143c;
+            border-radius: 8px;
+            outline: none;
+            background-color: #222222;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .registration input:focus {
+            border-color: #ff4d4d;
+            box-shadow: 0 0 5px #ff4d4d;
+        }
+
+        .registration button {
+            background-color: #dc143c;
+            color: #ffffff;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .registration button:hover {
+            background-color: #a3001b;
+        }
+
+        .registration p {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="RegistrationContainer">
+        <div class="registration">
+            <div class="content">
+                <h2>Register</h2>
+
+                <form th:action="@{/register}" method="get" th:object="${userRegistration}">
+                    <label for="u_id">UserID:</label>
+                    <input type="text" id="u_id" name="u_id" th:field="*{u_id}" required>
+
+                    <label for="uemail">Email:</label>
+                    <input type="email" id="uemail" name="uemail" th:field="*{uemail}" required>
+
+                    <label for="uname">Username:</label>
+                    <input type="text" id="uname" name="uname" th:field="*{uname}" required>
+
+                    <label for="unumber">Phone Number:</label>
+                    <input type="text" id="unumber" name="unumber" th:field="*{unumber}" required>
+
+                    <label for="upassword">Password:</label>
+                    <input type="password" id="upassword" name="upassword" th:field="*{upassword}" required>
+
+                    <button type="submit">Register</button>
+                </form>
+
+                <p th:text="${error}"></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

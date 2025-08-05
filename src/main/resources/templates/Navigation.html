@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+        <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3fff5;
+        }
+
+        nav {
+            background-color: #6ab591;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            padding: 8px 12px;
+            transition: border-bottom 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            border-bottom: 2px solid #1db954; 
+        }
+
+        nav ul li a.active {
+            color: #a5d6a7;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                margin: 10px 0;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav th:fragment="navbar()">
+        <img th:src="@{/Images/logo.png}" alt="Logo" class="logo" style="height: 50px;">
+        <ul style="list-style: none; display: flex; gap: 30px; padding: 0;">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/location">Locate Us</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

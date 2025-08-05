@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>SwadStation</title>
+	<link rel="icon" type="image/x-icon" href="./Images/logo.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" th:href="@{/css/Home.css}" />
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Poppins', sans-serif;
+			height: 100vh;
+			background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+				url('./Images/istockphoto-1006271368-612x612.jpg') no-repeat center center/cover;
+			color: #fff;
+		}
+
+		.text h1 {
+			font-size: 3rem;
+			color: #ff4c5b;
+			text-shadow: 2px 2px 6px #000000;
+			margin-bottom: 10px;
+		}
+
+		.text h3 {
+			font-size: 1.5rem;
+			color: #ffb3ba;
+			font-weight: 400;
+			text-shadow: 1px 1px 4px #000000;
+		}
+
+		@media (max-width: 768px) {
+			.text h1 {
+				font-size: 2rem;
+			}
+
+			.text h3 {
+				font-size: 1rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav th:replace="~{Navigation :: navbar()}"></nav>
+
+	<div class="text">
+		<h1>WELCOME TO The SwadStation</h1>
+		<h3>Where Flavor Meets Passion! <br /> Transform your daily life with our curated collection</h3>
+	</div>
+
+</body>
+
+</html>

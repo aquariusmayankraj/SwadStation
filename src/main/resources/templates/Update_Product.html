@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Update Product</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #dc143c;
+        }
+
+        a {
+            color: #dc143c;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .updateProduct {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(220, 20, 60, 0.3);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .updateProduct h3 {
+            color: #dc143c;
+            margin-bottom: 20px;
+        }
+
+        .updateProduct input[type="text"],
+        .updateProduct textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border: 1px solid #dc143c;
+            border-radius: 8px;
+            outline: none;
+            background-color: #222;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .updateProduct input:focus,
+        .updateProduct textarea:focus {
+            border-color: #ff4567;
+            box-shadow: 0 0 5px #ff4567;
+        }
+
+        .updateProduct textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .updateProduct button {
+            background-color: #dc143c;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .updateProduct button:hover {
+            background-color: #ff4567;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/services">Back_To_Services</a>
+    <div class="updateProduct">
+        <h3>UPDATE EXISTING PRODUCT :</h3>
+        <form action="" th:action="@{'/updatingProduct/'+${product.pid}}" th:object="${product}">
+            Product Id:
+            <input type="hidden" th:text="${product.pid}" th:value="${product.pid}" /><br />
+            Product Name:
+            <input type="text" name="pname" th:value="${product.pname}" /><br />
+            Product Price:
+            <input type="text" name="pprice" th:value="${product.pprice}" /><br />
+            Product_Desc:<br />
+            <textarea name="pdescription" th:text="${product.pdescription}" cols="10" rows="1"></textarea><br />
+            <button type="submit">Update Product</button>
+        </form>
+    </div>
+</body>
+
+</html>

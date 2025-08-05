@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin : Add User</title>
+  <link rel="stylesheet" href="" th:href="@{/css/Add_User.css}" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d; 
+      color: #f5f5f5;
+    }
+
+    a {
+      display: inline-block;
+      margin: 20px;
+      text-decoration: none;
+      background-color: #b71c1c;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #a40000;
+    }
+
+    .addUser {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(255, 0, 0, 0.1);
+      border: 1px solid #ffcccc;
+    }
+
+    .addUser h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #ff4c4c;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ff9999;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #e57373;
+      background-color: #2b2b2b;
+      color: #fff;
+      font-size: 1em;
+    }
+
+    form input::placeholder {
+      color: #ccc;
+    }
+
+    form button {
+      width: 100%;
+      background-color: #b71c1c;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    form button:hover {
+      background-color: #a40000;
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 576px) {
+      .addUser {
+        margin: 30px 20px;
+        padding: 20px;
+      }
+
+      a {
+        margin: 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="/admin/services">Back to Services</a>
+
+  <div class="addUser">
+    <h3>ADD NEW USER / CUSTOMER</h3>
+    <form action="" th:action="@{/addingUser}" method="post">
+      <label for="name">User Name :</label>
+      <input type="text" name="uname" placeholder="Enter full name..." required />
+
+      <label for="email">User Email :</label>
+      <input type="email" name="uemail" placeholder="Enter email address..." required />
+
+      <label for="telephone">User Number :</label>
+      <input type="tel" name="unumber" placeholder="10-digit mobile number..." pattern="[0-9]{10}" required />
+
+      <input type="hidden" name="upassword" value="2330" />
+
+      <button type="submit">Add User</button>
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Error</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #000;
+			color: #ffb3b3;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.mainContainer {
+			text-align: center;
+			max-width: 600px;
+			padding: 30px;
+			background-color: #1a1a1a;
+			box-shadow: 0 6px 16px rgba(255, 0, 0, 0.2);
+			border-radius: 12px;
+			border: 1px solid #ff4c4c;
+		}
+
+		.mainContainer img {
+			height: 160px;
+			margin-bottom: 20px;
+			border-radius: 8px;
+			box-shadow: 0 0 8px #c62828;
+		}
+
+		h1 {
+			color: #ff4c4c;
+			margin-bottom: 5px;
+			font-size: 2.2em;
+		}
+
+		h3 {
+			color: #f28b82;
+			font-weight: 500;
+		}
+
+		small {
+			display: block;
+			color: #ccc;
+			margin: 10px 0;
+		}
+
+		small.error-note {
+			color: #ff7070;
+			font-weight: 500;
+			line-height: 1.5;
+		}
+
+		.actions {
+			margin-top: 25px;
+		}
+
+		.actions a {
+			display: inline-block;
+			margin: 0 10px;
+			padding: 10px 20px;
+			background-color: #c62828;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 6px;
+			transition: background-color 0.3s ease;
+			font-weight: 500;
+		}
+
+		.actions a:hover {
+			background-color: #a40000;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mainContainer">
+		<img src="/Images/repairImage.jpg" alt="Error Image" />
+		<h1>Oops... Sorry!</h1>
+		<h3>Something went wrong...</h3>
+		<small>Exception has occurred.</small>
+		<small class="error-note">
+			1. You might be submitting empty or invalid data.<br />
+			OR<br />
+			2. Email is already registered.
+		</small>
+		<div class="actions">
+			<a href="/services">Back</a>
+			<a href="https://www.google.com" target="_blank">Help</a>
+		</div>
+	</div>
+</body>
+
+</html>

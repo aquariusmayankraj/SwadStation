@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ADMIN PAGE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="" th:href="@{/css/Admin_page.css}" />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d;
+      color: #f5f5f5;
+    }
+
+    h2 {
+      color: #ff4c4c;
+      border-left: 5px solid #a40000;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+
+    .back {
+      text-decoration: none;
+      background-color: #a40000;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 500;
+      margin-bottom: 25px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      background-color: #750000;
+    }
+
+    .tables {
+      display: grid;
+      gap: 40px;
+    }
+
+    .tables > div {
+      background-color: #1a1a1a;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #ffcccc;
+      box-shadow: 0 5px 10px rgba(255, 0, 0, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #444;
+      text-align: center;
+    }
+
+    th {
+      background-color: #a40000;
+      color: #fff;
+    }
+
+    td {
+      color: #f5f5f5;
+    }
+
+    td i {
+      font-size: 1.1em;
+      transition: 0.3s;
+    }
+
+    td i:hover {
+      transform: scale(1.2);
+    }
+
+    .btns {
+      text-decoration: none;
+      background-color: #ff1f1f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btns:hover {
+      background-color: #c62828;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid #444;
+        border-radius: 6px;
+        padding: 10px;
+        background-color: #111;
+      }
+
+      th {
+        background-color: transparent;
+        color: #ff4c4c;
+        font-weight: bold;
+      }
+
+      td {
+        text-align: left;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        color: #ff4c4c;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="back" href="/login">Back</a>
+
+  <section class="tables">
+
+    <div class="admins">
+      <h2>Admins :</h2>
+      <table>
+        <tr>
+          <th>Admin Id</th>
+          <th>Admin Name</th>
+          <th>Admin Email</th>
+          <th>Admin Number</th>
+          <th>Actions</th>
+        </tr>
+        <tr th:each="admin : ${admins}">
+          <td th:text="${admin.adminId}"></td>
+          <td th:text="${admin.adminName}"></td>
+          <td th:text="${admin.adminEmail}"></td>
+          <td th:text="${admin.adminNumber}"></td>
+          <td>
+            <a style="color: #4dabf7;" th:href="@{'/updateAdmin/' + ${admin.adminId}}"><i class="fa-solid fa-pen"></i></a>
+            &nbsp;
+            <a style="color: #f94144;" th:href="@{'/deleteAdmin/' + ${admin.adminId}}"><i class="fa-solid fa-trash"></i></a>
+          </td>
+        </tr>
+      </table>
+      <a class="btns" th:href="@{/addAdmin}">Add Admin</a>
+    </div>
+
+    <!-- User Table -->
+    <div class="users">
+      <h2>Users :</h2>
+      <table>
+        <tr>
+          <th>User Id</th>
+          <th>User Name</th>
+          <th>User Email</th>
+          <th>User Number</th>
+          <th>Actions</th>
+        </tr>
+        <tr th:each="user : ${users}">
+          <td th:text="${user.u_id}"></td>
+          <td th:text="${user.uname}"></td>
+          <td th:text="${user.uemail}"></td>
+          <td th:text="${user.unumber}"></td>
+          <td>
+            <a style="color: #4dabf7;" th:href="@{'/updateUser/' + ${user.u_id}}"><i class="fa-solid fa-pen"></i></a>
+            &nbsp;
+            <a style="color: #f94144;" th:href="@{'/deleteUser/' + ${user.u_id}}"><i class="fa-solid fa-trash"></i></a>
+          </td>
+        </tr>
+      </table>
+      <a class="btns" th:href="@{/addUser}">Add User</a>
+    </div>
+
+    <!-- Product Table -->
+    <div class="products">
+      <h2>Products :</h2>
+      <table>
+        <tr>
+          <th>Product Id</th>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Actions</th>
+        </tr>
+        <tr th:each="product : ${products}">
+          <td th:text="${product.pid}"></td>
+          <td th:text="${product.pname}"></td>
+          <td th:text="${product.pprice}"></td>
+          <td>
+            <a style="color: #4dabf7;" th:href="@{'/updateProduct/' + ${product.pid}}"><i class="fa-solid fa-pen"></i></a>
+            &nbsp;
+            <a style="color: #f94144;" th:href="@{'/deleteProduct/' + ${product.pid}}"><i class="fa-solid fa-trash"></i></a>
+          </td>
+        </tr>
+      </table>
+      <a class="btns" th:href="@{/addProduct}">Add Product</a>
+    </div>
+
+  </section>
+</body>
+
+</html>

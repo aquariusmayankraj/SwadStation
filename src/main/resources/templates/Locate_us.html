@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SwadStation | Locate Us</title>
+    <link rel="icon" type="image/x-icon" href="./img/b.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/Navigation.css}" />
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ff4567;
+        }
+
+        h1, h4, p, h5 {
+            color: #ff4567;
+        }
+
+        .location-section iframe {
+            border: 3px solid #ff4567;
+            border-radius: 10px;
+            width: 90%;
+            height: 450px;
+            max-width: 100%;
+        }
+
+        .contact-col {
+            padding: 20px;
+            background-color: #111;
+            border: 2px solid #ff4567;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(255, 0, 50, 0.2);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ff4567;
+            border-radius: 8px;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .visit-btn.red-btn {
+            background-color: #dc143c;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .visit-btn.red-btn:hover {
+            background-color: #ff4567;
+        }
+
+        .contact-icon {
+            color: #ff4567;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 30px 0 20px 0;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .icons a {
+            color: #ff4567;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+
+        .icons a:hover {
+            color: #fff;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #111;
+            text-align: center;
+            font-size: 14px;
+            color: #ff4567;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .location-section iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav th:replace="~{Navigation::navbar()}"></nav>
+
+    <h1>Locate Us</h1>
+
+    <section class="location-section" style="text-align: center;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d309.8996701767793!2d77.33066369978266!3d28.50620165551166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce72191d3cda9%3A0x62a849273ead7d06!2sThe%20Taste%20Spot%20Food%20Mood!5e0!3m2!1sen!2sin!4v1754358700887!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="contact-us">
+        <div class="row">
+            <div class="contact-col">
+                <div>
+                    <i class="contact-icon fas fa-home"></i>
+                    <span>
+                        <h5>A-114, near Arpan Public School, Jaitpur Extension Part-1, Badarpur, New Delhi - 110044</h5>
+                        <p>New Delhi, India</p>
+                    </span>
+                </div>
+
+                <div>
+                    <i class="contact-icon fas fa-phone"></i>
+                    <span>
+                        <h5>+91 7982031047</h5>
+                        <p>Monday to Saturday, 10AM to 8PM</p>
+                    </span>
+                </div>
+
+                <div>
+                    <i class="contact-icon fas fa-envelope"></i>
+                    <span>
+                        <h5>ironheart.mayank@gmail.com</h5>
+                        <p>Email us your query</p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="contact-col">
+                <form action="" method="post" enctype="text/plain">
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                    <input type="email" name="email" placeholder="Enter email address" required>
+                    <input type="text" name="subject" placeholder="Enter subject" required>
+                    <textarea rows="6" name="message" placeholder="Your message..." required></textarea>
+                    <button type="submit" class="visit-btn red-btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="icons">
+        <a href="https://www.instagram.com/uranium_x_/?next=%2F&hl=en" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61552934804832" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://x.com/ninjaxmayank" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>Explore our wide range of products designed to enhance your life.<br />© 2025 SwadStation</p>
+    </section>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>SwadStation - Login</title>
+    <link rel="icon" type="image/x-icon" href="./img/b.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .LoginContainer {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .admin, .user {
+            background-color: #111;
+            border: 2px solid #dc143c;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(220, 20, 60, 0.4);
+            padding: 30px 25px;
+            width: 320px;
+            max-width: 90%;
+            color: #ff4567;
+            text-align: center;
+        }
+
+        strong {
+            display: inline-block;
+            background: #dc143c;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .content h2 {
+            color: #ff4567;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #222;
+            border: 1px solid #ff4567;
+            border-radius: 8px;
+            color: #eee;
+            font-size: 14px;
+            margin: 10px 0;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #ff6a6a;
+            background-color: #111;
+        }
+
+        .loginButton {
+            width: 100%;
+            background-color: #dc143c;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .loginButton:hover {
+            background-color: #ff4567;
+        }
+
+        p {
+            font-size: 13px;
+            color: #bbb;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #ff4567;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        small {
+            font-size: 12px;
+            color: #ff8080;
+        }
+
+        @media (max-width: 768px) {
+            .LoginContainer {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav th:replace="~{Navigation::navbar()}"></nav>
+
+    <div class="LoginContainer">
+        <div class="admin">
+            <div class="content">
+                <strong>BUSINESS</strong>
+                <h2>For <span style="color:#ff4567;">Admins</span></h2>
+
+                <form th:action="@{/adminLogin}" method="post">
+                    <b>Email :</b>
+                    <input type="email" name="email" placeholder="Enter email..." class="email" required><br />
+                    <b>Password:</b>
+                    <input type="password" name="password" placeholder="Enter password" class="password" required>
+                    <small th:text="${error}"></small><br />
+                    <button type="submit" class="loginButton">Log in</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="user">
+            <div class="content">
+                <h2>For <span style="color:#ff4567;">Users</span></h2>
+
+                <form th:action="@{/userLogin}" method="post">
+                    <b>Email :</b>
+                    <input type="email" name="userEmail" placeholder="Enter email" required><br />
+                    <b>Password:</b>
+                    <input type="password" name="userPassword" placeholder="Enter password" required maxlength="8" minlength="4" class="userPassword"><br />
+                    <small th:text="${error2}"></small><br />
+                    <button type="submit" class="loginButton">Log in</button><br />
+                    <p>I don't have an account? <a href="register.html">Register Here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

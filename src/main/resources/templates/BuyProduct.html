@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Buy Product</title>
+  <link rel="stylesheet" href="" th:href="@{/css/Buy_Product.css}" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("https://images.pexels.com/photos/7219747/pexels-photo-7219747.jpeg") no-repeat center center/cover;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .back-btn {
+      border: none;
+      background-color: #a40000;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #750000;
+    }
+
+    .welcome {
+      margin-top: 30px;
+    }
+
+    .welcome marquee {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffdddd;
+    }
+
+    .searchInput {
+      margin-top: 40px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid #a40000;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .searchInput h1 {
+      color: #ffdddd;
+      margin-bottom: 20px;
+    }
+
+    .searchInput input {
+      padding: 12px;
+      width: 70%;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 12px;
+    }
+
+    .searchInput button {
+      padding: 12px;
+      width: 25%;
+      background-color: #a40000;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .searchInput button:hover {
+      background-color: #750000;
+    }
+
+    .message {
+      color: #ff4c4c;
+      font-weight: bold;
+    }
+
+    .details {
+      margin-top: 40px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #222;
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .details label {
+      font-weight: bold;
+    }
+
+    .details input,
+    .details button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .details button {
+      background-color: #a40000;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .details button:hover {
+      background-color: #750000;
+    }
+
+    .details table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .details th {
+      background-color: #a40000;
+      color: white;
+      padding: 12px;
+      font-weight: 600;
+    }
+
+    .details td {
+      text-align: center;
+      padding: 12px;
+      background-color: #fff2f2;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+    }
+
+    @media (max-width: 600px) {
+      .searchInput,
+      .details {
+        width: 95%;
+      }
+
+      .searchInput input,
+      .searchInput button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="welcome">
+    <marquee direction="right" behavior="slide" scrollamount="15" loop="1">
+      Welcome Back <span th:text="${name}"></span>
+    </marquee>
+  </div>
+
+  <a href="/login" class="back-btn">Back</a>
+
+  
+    <form th:action="@{/product/search}" method="post" class="searchInput">
+      <h1>Product Search</h1>
+      <input type="text" name="productName" required placeholder="Please enter the Product Name...">
+      <button type="submit">SEARCH</button><br />
+      <small class="message" th:text="${message}"></small>
+    </form>
+
+    <div th:if="${product!=null}" class="details">
+      <form th:action="@{/product/order}" th:object="${product}" method="post">
+        <label>Product Name:</label>
+        <input type="text" name="oName" th:value="${product.pname}" readonly>
+
+        <label>Product Price:</label>
+        <input type="text" name="oPrice" th:value="${product.pprice}" readonly>
+
+        <label>Quantity:</label>
+        <input type="number" name="oQuantity" placeholder="Minimum: 1 KG" min="1" required>
+
+        <button type="submit">Order Now</button>
+      </form>
+    </div>
+
+    <div th:if="${orders!=null}" class="details">
+      <h2>Your Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="order : ${orders}">
+            <td th:text="${order.oName}"></td>
+            <td th:text="${order.oPrice}"></td>
+            <td th:text="${order.oQuantity}"></td>
+            <td th:text="${order.totalAmmout}"></td>
+            <td th:text="${order.orderDate}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+ 
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  let toastMessage = /*[['${toastMessage}']]*/ "";
+  let toastType = /*[['${toastType}']]*/ "";
+
+  if (toastMessage && toastMessage !== "") {
+    toastr.options = {
+      "closeButton": true,
+      "progressBar": true,
+      "positionClass": "toast-top-right"
+    };
+
+    if (toastType === 'success') {
+      toastr.success(toastMessage);
+    } else if (toastType === 'error') {
+      toastr.error(toastMessage);
+    } else if (toastType === 'info') {
+      toastr.info(toastMessage);
+    } else if (toastType === 'warning') {
+      toastr.warning(toastMessage);
+    }
+  }
+  /*]]>*/
+</script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+
+</html>
